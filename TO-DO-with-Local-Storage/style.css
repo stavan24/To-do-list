@@ -1,0 +1,397 @@
+/* =====================
+   DESIGN TOKENS
+===================== */
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #4b79ff;
+  --border: #e5e7eb;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #60a5fa;
+  --border: #1f2937;
+}
+
+/* =====================
+   GLOBAL RESET
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Poppins", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* =====================
+   NAVBAR (PRO)
+===================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--muted);
+  transition: 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+#theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* =====================
+   HAMBURGER
+===================== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  margin: 4px 0;
+}
+
+/* =====================
+   LAYOUT
+===================== */
+main {
+  margin-top: 90px;
+}
+
+/* =====================
+   PAGES (HOME / ABOUT)
+===================== */
+.page {
+  max-width: 900px;
+  margin: 120px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.page h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.page p {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.cta {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.cta:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   TODO CARD (PRO)
+===================== */
+.box {
+  background: var(--card);
+  width: 380px;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  margin: auto;
+}
+
+.box h1 {
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.task input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.task input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* BUTTON */
+.btn button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* TODO LIST */
+#todo-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+#todo-list li {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#todo-list li.completed span {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+#todo-list li button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* =====================
+   PROFILE (CLEAN CARD)
+===================== */
+.profile-card {
+  background: var(--card);
+  padding: 28px;
+  border-radius: 18px;
+  max-width: 420px;
+  margin: auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.profile-card p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.profile-card button {
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+.edit-area input {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+/* =====================
+   ABOUT PAGE STYLING
+===================== */
+
+.about-container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+/* Page Title */
+.about-container h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.about-container .subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 60px;
+}
+
+/* Sections */
+.about-section {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 35px;
+  margin-bottom: 40px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.about-section h2 {
+  font-size: 26px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-section p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+/* Bullet list */
+.about-list {
+  margin-top: 15px;
+  padding-left: 18px;
+}
+
+.about-list li {
+  font-size: 16px;
+  margin: 10px 0;
+  color: var(--text);
+}
+
+/* Instagram highlight card */
+.highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(75,121,255,0.12),
+    rgba(106,212,255,0.12)
+  );
+  border: 1px solid rgba(75,121,255,0.3);
+}
+
+/* CTA button */
+.cta {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(75,121,255,0.4);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .about-container h1 {
+    font-size: 32px;
+  }
+
+  .about-section {
+    padding: 25px;
+  }
+}
+
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    right: 20px;
+    top: 65px;
+    background: var(--card);
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 14px;
+    display: none;
+    border: 1px solid var(--border);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .box {
+    width: 90%;
+  }
+
+  .page h1 {
+    font-size: 30px;
+  }
+}
