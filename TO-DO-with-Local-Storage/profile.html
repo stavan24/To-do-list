@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TodoPro | Profile</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile | Stavan</title>
+  <link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
 
@@ -13,7 +14,7 @@
 
   <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="todo.html">Todo</a></li>
+    <li><a  href="todo.html">Todo</a></li>
     <li><a href="about.html">About</a></li>
     <li><a class="active" href="profile.html">Profile</a></li>
   </ul>
@@ -25,32 +26,95 @@
     </div>
   </div>
 </nav>
-<main class="page">
-  <h1>Profile</h1>
+
+<main class="profile-container">
+  <h1>My Profile</h1>
 
   <div class="profile-card">
-    <p>
-      <strong>Name:</strong>
-      <span id="name-text">User</span>
-    </p>
+    <!-- NAME -->
+    <label>Name</label>
+    <p id="name-text">Stavan</p>
+    <input id="name-input" class="hidden" placeholder="Enter your name" />
 
-    <p>
-      <strong>Email:</strong>
-      <span id="email-text">user@email.com</span>
-    </p>
+    <!-- EMAIL -->
+    <label>Email</label>
+    <p id="email-text">stavan@example.com</p>
+    <input id="email-input" class="hidden" placeholder="Enter your email" />
 
-    <button id="edit-profile">Edit</button>
+    <!-- PROJECT -->
+    <label>Current Project</label>
+    <p id="project-text">Building productivity apps 🚀</p>
+    <input id="project-input" class="hidden" placeholder="Describe your project" />
 
-    <!-- Hidden inputs -->
-    <div class="edit-area hidden">
-      <input type="text" id="name-input" placeholder="Enter your name">
-      <input type="email" id="email-input" placeholder="Enter your email">
-      <button id="save-profile">Save</button>
-    </div>
+    <!-- SINGLE BUTTON -->
+    <button id="edit-btn" class="edit-btn">Edit Profile</button>
   </div>
 </main>
 
+<script>
+  const fields = ["name", "email", "project"];
+  const editBtn = document.getElementById("edit-btn");
+  let editing = false;
 
-<script src="script.js"></script>
+  // Load saved data
+  fields.forEach((f) => {
+    const saved = localStorage.getItem(f);
+    if (saved) document.getElementById(`${f}-text`).textContent = saved;
+  });
+
+  editBtn.addEventListener("click", () => {
+    editing = !editing;
+
+    fields.forEach((f) => {
+      const text = document.getElementById(`${f}-text`);
+      const input = document.getElementById(`${f}-input`);
+
+      if (editing) {
+        input.value = text.textContent;
+        text.classList.add("hidden");
+        input.classList.remove("hidden");
+      } else {
+        text.textContent = input.value || text.textContent;
+        localStorage.setItem(f, text.textContent);
+        input.classList.add("hidden");
+        text.classList.remove("hidden");
+      }
+    });
+
+    editBtn.textContent = editing ? "Save Profile" : "Edit Profile";
+  });
+
+  // ========== THEME TOGGLE ==========
+const themeToggle = document.getElementById("theme-toggle");
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  if (themeToggle) themeToggle.textContent = "☀️";
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    themeToggle.textContent = isDark ? "☀️" : "🌙";
+  });
+}
+
+// ========== HAMBURGER ==========
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+}
+
+
+</script>
+
 </body>
 </html>
